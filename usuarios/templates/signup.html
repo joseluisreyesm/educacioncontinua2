@@ -1,0 +1,25 @@
+{% extends "base_us.html" %}
+{% block title %}
+Registrar Nuevo Usuario
+{% endblock %}
+
+{% block content %}
+    <main class="container">
+    <div class="jumbotron">
+        <h1>Registro Nuevo Usuario</h1>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <div class="col-md-8" >
+                        <form method="post">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <button class="btn btn-success" type="submit">Agregar</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+    </div>
+    </main>
+{% endblock %}
