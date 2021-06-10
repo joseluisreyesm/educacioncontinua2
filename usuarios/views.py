@@ -29,13 +29,10 @@ class NuevoUsuario(CreateView):
     success_url = reverse_lazy('eduacionapp:login')
 
 class UsuarioActualizar(UpdateView):
-    #model = Usuario
     fields = '__all__'
     extra_context = {'etiqueta': 'Actualizar', 'boton': 'Guardar'}
-    #success_url = reverse_lazy('escolarapp:perfil')
 
 class SignupUsuario(LoginView):
-    #model = Usuario
     template_name = 'usuarios/signup.html'
     form_class = AuthenticationForm
     success_url = reverse_lazy('escolarapp:login')
@@ -43,7 +40,6 @@ class SignupUsuario(LoginView):
 #### Usuario administrador
 
 class UsuarioEliminar(DeleteView):
-    #model = Usuario
     success_url = reverse_lazy('escolarapp:lista')
 
 class LoginUsuario(LoginView):
@@ -53,7 +49,7 @@ class LoginUsuario(LoginView):
 
 @login_required
 def prueba(request):
-        return HttpResponse("Hola quiero dormir")
+    return HttpResponse("Hola quiero dormir")
 
 def pruebaus(request):
     plantilla = 'eduacionapp/pruebaus.html'
