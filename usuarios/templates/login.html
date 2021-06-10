@@ -17,16 +17,12 @@ Login
         <div class="fadeIn first" style="text-align:center">
             <img src="{% static 'images/uaz.jpg' %}" id="icon" alt="User" >
         </div>
-
-
         <div class="col-md-12 offset-md-4">
             <div class="row">
                 <form method="post" >
                     {% csrf_token %}
-
                     <p>Usuario: {{form.username}}</p>
                     <p>Contraseña: {{form.password}}</p>
-
                     {% if user.is_anonymous%}
                      <input type="submit" class="fadeIn fourth" value="Acceder">
                     {% endif %}
@@ -34,7 +30,6 @@ Login
                 </form>
             </div>
         </div>
-
     </div>
 
 </main>

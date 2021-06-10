@@ -12,10 +12,10 @@
           </li>
             {% if user.is_authenticated%}
                  <li class="nav-item">
-            <a class="nav-link" href="{% url 'eduacionapp:profesor'%}"> Profesores</a>
+            <a class="nav-link" href="{% url 'eduacionapp:index'%}">Moodle</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'eduacionapp:alumno' %}">Alumnos</a>
+            <a class="nav-link" href="{% url 'eduacionapp:index' %}">Chamilo</a>
           </li>
             {% endif %}
         </ul>
