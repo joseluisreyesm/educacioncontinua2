@@ -1,0 +1,20 @@
+{% extends "base_us.html" %}
+{% block title %}
+    Registrar Nuevo Usuario
+{% endblock %}
+
+{% block content %}
+
+    <div class="container card mb-3" style="width: 30rem;">
+    <div class="sign-form ">
+     <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+     <div class="d-flex justify-content-center mt-3 login_container">
+      <button class="btn  btn-success" type="submit">Agregar</button>
+     </div>
+      <a class="d-flex card-text justify-content-center mt-3 login_container"  href="{% url 'eduacionapp:login' %}">Accede con una cuenta</a>
+     </form>
+    </div>
+    </div>
+{% endblock %}

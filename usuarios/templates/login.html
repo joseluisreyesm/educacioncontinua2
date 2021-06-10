@@ -1,50 +1,45 @@
 {% extends "base_us.html" %}
 {% block title %}
-Login
+    Login
 {% endblock %}
-
 {% load static %}
+<style>
+    .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+    }
+</style>
 {% block content %}
-
-<!------ Include the above in your HEAD tag ---------->
-
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
-<main class="container">
-    <div class="jumbotron">
-    <!-- Icon  -->
-        <div class="fadeIn first" style="text-align:center">
-            <img src="{% static 'images/uaz.jpg' %}" id="icon" alt="User" >
-        </div>
-
-
-        <div class="col-md-12 offset-md-4">
-            <div class="row">
-                <form method="post" >
-                    {% csrf_token %}
-
-                    <p>Usuario: {{form.username}}</p>
-                    <p>Contraseña: {{form.password}}</p>
-
-                    {% if user.is_anonymous%}
-                     <input type="submit" class="fadeIn fourth" value="Acceder">
-                    {% endif %}
-
-                </form>
+    <div class="container card mb-3" style="width: 18rem;">
+        <br>
+        <img src="{% static 'images/uaz.jpg' %} " class="card-img   d-flex justify-content-center" alt="Card image cap">
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3 justify-content-center">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                {{ form.username }}
             </div>
-        </div>
+            <div class="input-group mb-3 justify-content-center">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                {{ form.password }}
+            </div>
+            {% if user.is_anonymous %}
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <input class="btn login_btn" type="submit" value="Acceder" href="{% url 'eduacionapp:home' %}">
+                </div>
+            {% endif %}
+            <a class="d-flex card-text justify-content-center mt-3 login_container" href="#">¿Olvidaste tu contraseña?</a>
+            <a class="d-flex card-text justify-content-center mt-3 login_container"  href="{% url 'eduacionapp:register' %}">Registrate</a>
 
+        </form>
+        <br>
     </div>
 
-</main>
-    <!-- Login Form -->
 
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">¿Olvidaste tu contraseña?</a>
-    </div>
-
-  </div>
-</div>
 {% endblock %}
