@@ -18,6 +18,7 @@ from django.contrib.auth.models import Group
 from .decorators import unauthenticated_user
 from django.utils.decorators import method_decorator
 
+
 @method_decorator(unauthenticated_user, name='dispatch')
 class Register(CreateView):
     model = User
