@@ -1,9 +1,10 @@
+from django.contrib.auth import views as auth_views
 from django.urls import path
 from . import views
-from django.contrib.auth import views as auth_views
 
 app_name='eduacionapp'
 
+#Aqui se determinan las urls a las que se puede acceder a la página
 urlpatterns = [
     path('home/', views.Home.as_view(), name='home'),
     path('login/', views.Login.as_view(), name='login'),
