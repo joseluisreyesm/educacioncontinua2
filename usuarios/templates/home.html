@@ -6,8 +6,32 @@ Login
 {% load static %}
 
 {% block content %}
+    <!-- Cosas que muestra para el administrador  -->
+    {% if request.user.is_staff %}
+    <h2>hola bb</h2>
+
+    {% else %}
     {% if user.is_authenticated %}
 <div class="card-deck card mb-3">
+<!-- Cosas que muestra para el alumno  -->
+  {% if request.user.groups.all.0.name == "alumno" %}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Alumno</h5>
+      <p class="card-text">Bienvenido alumno a esta sesión.</p>
+      <a class="d-flex card-text justify-content-center mt-3 login_container" href="#">:)</a>
+    </div>
+  </div>
+  <!-- Cosas que muestra para el profesor  -->
+{% elif request.user.groups.all.0.name == "profesor"%}
+    <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Docente</h5>
+      <p class="card-text">Bienvenido alumno a esta sesión.</p>
+      <a class="d-flex card-text justify-content-center mt-3 login_container" href="#">:)</a>
+    </div>
+  </div>
+{% endif %}
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Moodle</h5>
@@ -22,13 +46,9 @@ Login
       <a class="d-flex card-text justify-content-center mt-3 login_container" href="#">Acceder</a>
     </div>
   </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Plataforma</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <a class="d-flex card-text justify-content-center mt-3 login_container" href="#">Acceder</a>
-    </div>
-  </div>
+
 </div>
     {% endif %}
+    {% endif %}
+
 {% endblock %}
