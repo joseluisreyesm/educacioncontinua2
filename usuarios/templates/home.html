@@ -7,26 +7,30 @@ Login
 
 {% block content %}
     <!-- Cosas que muestra para el administrador  -->
-    <h1 class="app-page-title">  Lista de usuarios</h1>
-    <div class="app-card app-card-orders-table shadow-sm mb-5">
+
     {% if request.user.is_staff %}
+    <h2 class="app-page-title">  Lista de usuarios</h2>
+    <div class="app-card app-card-orders-table shadow-sm mb-5">
     <table class="table">
         <thead>
             <th>Matricula</th>
-            <th>Usuario</th>
+            <th>Nombre</th>
             <th>Acciones</th>
         </thead>
         <tbody>
-            {% for User in usuarios %}
+            {% for user in usuarios %}
             <tr>
-                <td>{{User.username}}</td>
-                <td>{{User.first_name}}</td>
+                {% if user.username != "admin" %}
+                <td>{{user.username}}</td>
+                <td>{{user.first_name}} {{user.last_name}}</td>
                 <td>
-                    <a href="" class="btn btn-primary btn-sm">Ver</a>
-                    <a href="" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="" class="btn btn-primary btn-sm">Modificar</a>
                     <a href="" class="btn btn-danger btn-sm">Eliminar</a>
                 </td>
             </tr>
+
+                {% endif %}
+
             {% endfor %}
         </tbody>
     </table>

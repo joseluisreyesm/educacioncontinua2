@@ -2,9 +2,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
-
+#Este es el form del registro del usuario en la plataforma
 class UsuarioForm(UserCreationForm):
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['password1'].label = 'Introduce tu contraseña'
