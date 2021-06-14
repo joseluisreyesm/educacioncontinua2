@@ -7,6 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from .decorators import unauthenticated_user
 from django.utils.decorators import method_decorator
+from django.views.generic import ListView
 from django.shortcuts import render
 
 
@@ -26,16 +27,14 @@ class Login(LoginView):
     success_url = reverse_lazy('eduacionapp:admin')
 
 #Esta clase es para organizar el contenido base de la plataforma web
-@method_decorator(unauthenticated_user, name='dispatch')
 class Home (TemplateView):
     template_name = 'Home.html'
     success_url = reverse_lazy('eduacionapp:admin')
     usuarios = User.objects.all()
     extra_context = ({'usuarios': usuarios})
-
-    #Lista los usuarios de la plataforma en home.html
     def lista(request):
         usuarios = User.objects.all()
         return render(request, 'home.html', {'usuarios': usuarios})
 
-
+class ListaUsuario(ListView):
+    model = User
