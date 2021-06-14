@@ -7,9 +7,30 @@ Login
 
 {% block content %}
     <!-- Cosas que muestra para el administrador  -->
+    <h1 class="app-page-title">  Lista de usuarios</h1>
+    <div class="app-card app-card-orders-table shadow-sm mb-5">
     {% if request.user.is_staff %}
-    <h2>hola bb</h2>
-
+    <table class="table">
+        <thead>
+            <th>Matricula</th>
+            <th>Usuario</th>
+            <th>Acciones</th>
+        </thead>
+        <tbody>
+            {% for User in usuarios %}
+            <tr>
+                <td>{{User.username}}</td>
+                <td>{{User.first_name}}</td>
+                <td>
+                    <a href="" class="btn btn-primary btn-sm">Ver</a>
+                    <a href="" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
     {% else %}
     {% if user.is_authenticated %}
 <div class="card-deck card mb-3">
@@ -27,7 +48,7 @@ Login
     <div class="card">
     <div class="card-body">
       <h5 class="card-title">Docente</h5>
-      <p class="card-text">Bienvenido alumno a esta sesión.</p>
+      <p class="card-text">Bienvenido docente a esta sesión.</p>
       <a class="d-flex card-text justify-content-center mt-3 login_container" href="#">:)</a>
     </div>
   </div>
