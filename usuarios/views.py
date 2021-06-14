@@ -32,6 +32,7 @@ class Home (TemplateView):
     success_url = reverse_lazy('eduacionapp:admin')
     usuarios = User.objects.all()
     extra_context = ({'usuarios': usuarios})
+
     def lista(request):
         usuarios = User.objects.all()
         return render(request, 'home.html', {'usuarios': usuarios})
