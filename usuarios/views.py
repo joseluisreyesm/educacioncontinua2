@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from .decorators import unauthenticated_user
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 #Esta clase se utiliza para realizar el registro de un nuevo usuario en la plataforma web
@@ -39,3 +39,14 @@ class Home (TemplateView):
 
 class ListaUsuario(ListView):
     model = User
+
+def editar_usuario(request, id):
+    usuario = User.objects.get(id=id)
+    form = UsuarioForm(instance=usuario)
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST, instance=usuario)
+        if form.is_valid():
+            form.save()
+            return redirect('eduacionapp:home')
+    context = {'form': form}
+    return render(request, 'editar_usuario.html', context)
