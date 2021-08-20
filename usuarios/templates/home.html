@@ -22,10 +22,10 @@ Login
                 {% if user.username != "admin" %}
                 <td>{{user.username}}</td>
                 <td>{{user.first_name}} {{user.last_name}}</td>
-
                 <td>
-                    <a href="{% url 'eduacionapp:editar' user.id %}" class="btn btn-primary btn-sm">Modificar</a>
-                    <a href="" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a href="{% url 'eduacionapp:editar' user.id %}" class="btn btn-primary btn-sm">Modificar Informacion</a>
+                    <a href="{% url 'eduacionapp:editar_permisos' user.id %}" class="btn btn-primary btn-sm">Modificar Permisos</a>
+                    <a href="{% url 'eduacionapp:borrar' user.id %}" class="btn btn-danger btn-sm">Eliminar</a>
                 </td>
             </tr>
 
